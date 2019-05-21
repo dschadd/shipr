@@ -20,6 +20,17 @@ Rails.application.routes.draw do
     patch "/couriers/:id" => "couriers#update"
     delete "/couriers/:id" => "couriers#destory"
 
+    get "/consignees" => "consignees#index"
+    post "/consignees" => "consignees#create"
+    get "/consignees/:id" => "consignees#show"
+    patch "/consignees/:id" => "consignees#update"
+    delete "/consignees/:id" => "consignees#destory"
+
+    get "/shipping_addresses" => "shipping_addresses#index"
+    post "/shipping_addresses" => "shipping_addresses#create"
+    get "/shipping_addresses/:id" => "shipping_addresses#show"
+    patch "/shipping_addresses/:id" => "shipping_addresses#update"
+    delete "/shipping_addresses/:id" => "shipping_addresses#destory"
 
   end
 
