@@ -1,0 +1,2 @@
+module Api::ShippingAddressesHelper
+end
