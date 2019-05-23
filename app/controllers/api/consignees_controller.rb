@@ -5,7 +5,7 @@ class Api::ConsigneesController < ApplicationController
     render "index.json.jbuilder"
   end
 
-  def post
+  def create
     @consignee = Consignee.new(
       name: params[:name],
       phone: params[:phone],
