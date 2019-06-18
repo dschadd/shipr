@@ -1,6 +1,8 @@
 class Api::ShipmentsController < ApplicationController
 
+
   def index
+    puts Shipment.ups_rate_getter
     @shipments = Shipment.all
     render "index.json.jbuilder"
   end
