@@ -16,7 +16,7 @@ class Shipment < ApplicationRecord
     rate_response = HTTP
       .headers(headers)
       .post("https://wwwcie.ups.com/ship/v1801/rating/Shop",
-        json: {
+        json: { # Refactor this to declare outside of this HTTP request
           "RateRequest": {
             "Shipment": {
               "Shipper": {
