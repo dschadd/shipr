@@ -52,5 +52,6 @@ gem 'http'
 gem 'figaro'
 
 gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 
 gem 'rack-cors'
