@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  # devise_for :users
+
+  resources :sessions, only: [:create, :destroy]
+
   namespace :api do  
 
     get "/users" => "users#index"

@@ -52,3 +52,5 @@ gem 'http'
 gem 'figaro'
 
 gem 'devise'
+
+gem 'rack-cors'
