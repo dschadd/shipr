@@ -1,17 +1,27 @@
 class SessionsController < ApplicationController
 
   def create
-    user = User.where(email: params[:email]).first
-
+    user = User.find_by(email: params[:email])
     if user&.valid_password?(params[:password])
-      render json: user.as_json(only: [:email, :authentication_token]), status: :created
+      # Clean up the controller here by moving the logic of creating a JWT into a separate class
+      jwt = JWT.encode(
+        {
+          user_id: user.id, # the data to encode
+          exp: 24.hours.from_now.to_i # the expiration time
+        },
+        Rails.application.credentials.fetch(:secret_key_base), # the secret key
+        'HS256' # the encryption algorithm
+      )
+      render json: {jwt: jwt, email: user.email, user_id: user.id}, status: :created
     else
-      head(:unauthorized)
+      render json: {}, status: :unauthorized
     end
   end
 
   def destroy
 
   end
+
+
 
 end

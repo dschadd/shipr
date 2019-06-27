@@ -53,5 +53,6 @@ gem 'figaro'
 
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'jwt'
 
 gem 'rack-cors'
