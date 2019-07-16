@@ -1,15 +1,66 @@
 class Api::RatesController < ApplicationController
 
-  def self.ups_rate_getter
+  def index
 
     headers = {
       "Username" => "#{ENV["UPS_EMAIL"]}",
       "Password" => "#{ENV["UPS_PASSWORD"]}", 
       "AccessLicenseNumber" => "#{ENV["UPS_KEY"]}"
     }
+
+    shipper_address = params[:shipper_address]
+    ship_to_address = params[:ship_to_address]
     
-    json_data = { # Refactor this to declare outside of this HTTP request
-          "RateRequest": {
+    json_data = {
+      "RateRequest": {
+        "Shipment": {
+          "Shipper": {
+            "Address": {
+              "AddressLine": "569 Yarmouth Rd",
+              "City": "Elk Grove Village",
+              "StateProvinceCode": "IL",
+              "PostalCode": "60007",
+              "CountryCode": "US"
+              }
+            },
+          "ShipTo": {
+            "Address":{
+              "AddressLine": "500 Dogwood Trl",
+              "City": "Elk Grove Village",
+              "StateProvinceCode": "IL",
+              "PostalCode": "60007",
+              "CountryCode": "US"
+            }
+          },
+          "Package": {
+            "PackagingType": {
+              "Code": "02"
+            },
+            "Dimensions": {
+              "UnitOfMeasurement": {
+                "Code": "IN"
+              },
+              "Length": "5",
+              "Width": "4",
+              "Height": "3"
+            },
+            "PackageWeight": {
+              "UnitOfMeasurement": {
+                "Code": "Lbs",
+                "Description": "pounds"
+              },
+              "Weight": "1"
+            }
+          }
+        }
+      }
+    }
+
+    rate_response = HTTP
+      .headers(headers)
+      .post("https://wwwcie.ups.com/ship/v1801/rating/Shop",
+        :body =>
+        "RateRequest": {
             "Shipment": {
               "Shipper": {
                 "Address": {
@@ -50,12 +101,7 @@ class Api::RatesController < ApplicationController
                 }
               }
             }
-          }
-        }
-
-    rate_response = HTTP
-      .headers(headers)
-      .post("https://wwwcie.ups.com/ship/v1801/rating/Shop", json: json_data)
+          })
   end
 
 end

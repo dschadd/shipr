@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
-  namespace :api do  
+  namespace :api do
+
+    resources :rates
 
     resources :users
 
