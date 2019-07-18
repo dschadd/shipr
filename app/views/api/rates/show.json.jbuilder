@@ -1,0 +1,1 @@
+json.ups @rate_response.body
