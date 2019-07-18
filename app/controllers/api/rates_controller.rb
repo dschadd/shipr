@@ -105,7 +105,7 @@ class Api::RatesController < ApplicationController
     @rate_response = HTTP
       .headers(headers)
       .post("https://wwwcie.ups.com/ship/v1801/rating/Shop",
-        :json => json_data)
+        :json => json_data).parse
 
     render "show.json.jbuilder"
 

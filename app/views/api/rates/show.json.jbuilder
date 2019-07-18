@@ -1,1 +1,1 @@
-json.ups @rate_response.body
+json.ups @rate_response
