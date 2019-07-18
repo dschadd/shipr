@@ -1,6 +1,6 @@
 class Api::RatesController < ApplicationController
 
-  def index
+  def create
 
     headers = {
       "Username" => "#{ENV["UPS_EMAIL"]}",
@@ -16,20 +16,20 @@ class Api::RatesController < ApplicationController
         "Shipment": {
           "Shipper": {
             "Address": {
-              "AddressLine": "#{shipper_address[address_line]}",
-              "City": "#{shipper_address[city]}",
-              "StateProvinceCode": "#{shipper_address[state_code]}",
-              "PostalCode": "#{shipper_address[postal_code]}",
-              "CountryCode": "#{shipper_address[country_code]}"
+              "AddressLine": "#{shipper_address["address_line"]}",
+              "City": "#{shipper_address["city"]}",
+              "StateProvinceCode": "#{shipper_address["state_code"]}",
+              "PostalCode": "#{shipper_address["postal_code"]}",
+              "CountryCode": "#{shipper_address["country_code"]}"
               }
             },
           "ShipTo": {
             "Address":{
-              "AddressLine": "#{ship_to_address[address_line]}",
-              "City": "#{ship_to_address[city]}",
-              "StateProvinceCode": "#{ship_to_address[state_code]}",
-              "PostalCode": "#{ship_to_address[postal_code]}",
-              "CountryCode": "#{ship_to_address[country_code]}"
+              "AddressLine": "#{ship_to_address["address_line"]}",
+              "City": "#{ship_to_address["city"]}",
+              "StateProvinceCode": "#{ship_to_address["state_code"]}",
+              "PostalCode": "#{ship_to_address["postal_code"]}",
+              "CountryCode": "#{ship_to_address["country_code"]}"
             }
           },
           "Package": {
