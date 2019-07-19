@@ -10,6 +10,7 @@ class Api::RatesController < ApplicationController
 
     shipper_address = params[:shipper_address]
     ship_to_address = params[:ship_to_address]
+    packageDimensions = params[:packageDimensions]
     
     json_data = {
       "RateRequest": {
@@ -38,18 +39,18 @@ class Api::RatesController < ApplicationController
             },
             "Dimensions": {
               "UnitOfMeasurement": {
-                "Code": "IN"
+                "Code": "#{packageDimensions["dimsUOM"]}"
               },
-              "Length": "5",
-              "Width": "4",
-              "Height": "3"
+              "Length": "#{packageDimensions["length"]}",
+              "Width": "#{packageDimensions["width"]}",
+              "Height": "#{packageDimensions["height"]}"
             },
             "PackageWeight": {
               "UnitOfMeasurement": {
-                "Code": "Lbs",
+                "Code": "#{packageDimensions["weightUOM"]}",
                 "Description": "pounds"
               },
-              "Weight": "1"
+              "Weight": "#{packageDimensions["weight"]}"
             }
           }
         }
