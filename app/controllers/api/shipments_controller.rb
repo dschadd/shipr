@@ -8,19 +8,22 @@ class Api::ShipmentsController < ApplicationController
   end
 
   def create
-    @shipment = Shipment.new(
-      description = params[:description],
-      price = params[:price],
-      weight = params[:weight],
-      length = params[:length],
-      width = params[:width],
-      height = params[:height]
-      )
-    if @shipment.save
-      render "show.json.jbuilder"
-    else
-      render json: {errors: @shipment.errors.full_messages}, status: :unprocessable_entity
-    end
+
+    @shipment = Shipment.shipment_booker
+
+    # @shipment = Shipment.new(
+    #   description = params[:description],
+    #   price = params[:price],
+    #   weight = params[:weight],
+    #   length = params[:length],
+    #   width = params[:width],
+    #   height = params[:height]
+    #   )
+    # if @shipment.save
+    #   render "show.json.jbuilder"
+    # else
+    #   render json: {errors: @shipment.errors.full_messages}, status: :unprocessable_entity
+    # end
   end
 
   def show
