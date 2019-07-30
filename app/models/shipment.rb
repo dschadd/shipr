@@ -94,4 +94,9 @@ class Shipment < ApplicationRecord
     }
   }
 
+  @shipment_response = HTTP
+    .headers(headers)
+    .post("https://wwwcie.ups.com/rest/Ship",
+      :json => json_data).parse
+
 end
