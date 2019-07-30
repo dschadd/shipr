@@ -13,9 +13,9 @@ class Shipment < ApplicationRecord
       "AccessLicenseNumber" => "#{ENV["UPS_KEY"]}"
     }
 
-    shipper_address = params[:shipper_address]
-    ship_to_address = params[:ship_to_address]
-    package_dimensions = params[:package_dimensions]
+    # shipper_address = params[:shipper_address]
+    # ship_to_address = params[:ship_to_address]
+    # package_dimensions = params[:package_dimensions]
 
 
     json_data = {

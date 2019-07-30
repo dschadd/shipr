@@ -24,6 +24,8 @@ class Api::ShipmentsController < ApplicationController
     # else
     #   render json: {errors: @shipment.errors.full_messages}, status: :unprocessable_entity
     # end
+
+    render "show.json.jbuilder"
   end
 
   def show

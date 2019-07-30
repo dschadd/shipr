@@ -1,1 +1,1 @@
-json.ups @shipment_response
+json.ups @shipment
